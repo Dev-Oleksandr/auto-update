@@ -10,16 +10,16 @@ local ffi = require "ffi"
 ---- auto-update
 local dlstatus = require('moonloader').download_status
 
-update_state = false -- Если переменная == true, значит начнётся обновление.
-update_found = false -- Если будет true, будет доступна команда /update.
+update_state = false -- Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ == true, Р·РЅР°С‡РёС‚ РЅР°С‡РЅС‘С‚СЃСЏ РѕР±РЅРѕРІР»РµРЅРёРµ.
+update_found = false -- Р•СЃР»Рё Р±СѓРґРµС‚ true, Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРЅР° РєРѕРјР°РЅРґР° /update.
 
 local script_vers = 1.0
-local script_vers_text = "v1.0" -- Название нашей версии. В будущем будем её выводить ползователю.
+local script_vers_text = "v1.0" -- РќР°Р·РІР°РЅРёРµ РЅР°С€РµР№ РІРµСЂСЃРёРё. Р’ Р±СѓРґСѓС‰РµРј Р±СѓРґРµРј РµС‘ РІС‹РІРѕРґРёС‚СЊ РїРѕР»Р·РѕРІР°С‚РµР»СЋ.
 
-local update_url = 'https://raw.githubusercontent.com/Dev-Oleksandr/auto-update/main/update.ini' -- Путь к ini файлу. Позже нам понадобиться.
+local update_url = 'https://raw.githubusercontent.com/Dev-Oleksandr/auto-update/main/update.ini' -- РџСѓС‚СЊ Рє ini С„Р°Р№Р»Сѓ. РџРѕР·Р¶Рµ РЅР°Рј РїРѕРЅР°РґРѕР±РёС‚СЊСЃСЏ.
 local update_path = getWorkingDirectory() .. "/update.ini"
 
-local script_url = '' -- Путь скрипту.
+local script_url = '' -- РџСѓС‚СЊ СЃРєСЂРёРїС‚Сѓ.
 local script_path = thisScript().path
 -----
 local Activated = false
@@ -231,18 +231,18 @@ for i = 1, 8 do
 end
 
 --listGN = {
---    fa.ICON_FA_ANGLE_DOUBLE_DOWN .. u8(" Выберите фракцию ") .. fa.ICON_FA_ANGLE_DOUBLE_DOWN,
---    u8("Правительство"),
+--    fa.ICON_FA_ANGLE_DOUBLE_DOWN .. u8(" Р’С‹Р±РµСЂРёС‚Рµ С„СЂР°РєС†РёСЋ ") .. fa.ICON_FA_ANGLE_DOUBLE_DOWN,
+--    u8("РџСЂР°РІРёС‚РµР»СЊСЃС‚РІРѕ"),
 --    u8("Emerald Police Departament"),
---    u8("Министерство Обороны"),
+--    u8("РњРёРЅРёСЃС‚РµСЂСЃС‚РІРѕ РћР±РѕСЂРѕРЅС‹"),
 --    u8("Health Medicine Ministry"),
---    u8("Средства Массовой Информации"),
---    u8("Лицензионный центр"),
---    u8("Мероприятия")
+--    u8("РЎСЂРµРґСЃС‚РІР° РњР°СЃСЃРѕРІРѕР№ РРЅС„РѕСЂРјР°С†РёРё"),
+--    u8("Р›РёС†РµРЅР·РёРѕРЅРЅС‹Р№ С†РµРЅС‚СЂ"),
+--    u8("РњРµСЂРѕРїСЂРёСЏС‚РёСЏ")
 --}
 --arr_gnews = listGN
 
-arr_gnews = {u8'Выберите фракцию', u8'Лицензионный центр', u8'Полиция', u8'Мин. Обороны', u8'Больницы', u8'СМИ', u8'Правительство', u8'Мероприятия'}
+arr_gnews = {u8'Р’С‹Р±РµСЂРёС‚Рµ С„СЂР°РєС†РёСЋ', u8'Р›РёС†РµРЅР·РёРѕРЅРЅС‹Р№ С†РµРЅС‚СЂ', u8'РџРѕР»РёС†РёСЏ', u8'РњРёРЅ. РћР±РѕСЂРѕРЅС‹', u8'Р‘РѕР»СЊРЅРёС†С‹', u8'РЎРњР', u8'РџСЂР°РІРёС‚РµР»СЊСЃС‚РІРѕ', u8'РњРµСЂРѕРїСЂРёСЏС‚РёСЏ'}
 
 
 function change_tags(text, table)
@@ -253,23 +253,23 @@ function change_tags(text, table)
 end
 
 local text = [[
-    Сейчас мой ник - {mynick}
-    Мой ID - {myid}
-    Сервер, на котором я играю - {server}
-    Не существующий тег - {local_tag}
+    РЎРµР№С‡Р°СЃ РјРѕР№ РЅРёРє - {mynick}
+    РњРѕР№ ID - {myid}
+    РЎРµСЂРІРµСЂ, РЅР° РєРѕС‚РѕСЂРѕРј СЏ РёРіСЂР°СЋ - {server}
+    РќРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С‚РµРі - {local_tag}
 ]]
---sampAddChatMessage(change_tags("Привет, я {mynick}, мой ид {myid}", change))
+--sampAddChatMessage(change_tags("РџСЂРёРІРµС‚, СЏ {mynick}, РјРѕР№ РёРґ {myid}", change))
 
 function main()
     if not isSampLoaded() or not isSampfuncsLoaded() then return end
     while not isSampAvailable() do wait(100) end
 
-        if update_found then -- Если найдено обновление, регистрируем команду /update.
-            sampRegisterChatCommand('update' function()  -- Если пользователь напишет команду, начнётся обновление.
-                update_state = true -- Если человек пропишет /update, скрипт обновится.
+        if update_found then -- Р•СЃР»Рё РЅР°Р№РґРµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ, СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РєРѕРјР°РЅРґСѓ /update.
+            sampRegisterChatCommand('update' function()  -- Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅР°РїРёС€РµС‚ РєРѕРјР°РЅРґСѓ, РЅР°С‡РЅС‘С‚СЃСЏ РѕР±РЅРѕРІР»РµРЅРёРµ.
+                update_state = true -- Р•СЃР»Рё С‡РµР»РѕРІРµРє РїСЂРѕРїРёС€РµС‚ /update, СЃРєСЂРёРїС‚ РѕР±РЅРѕРІРёС‚СЃСЏ.
             end)
         else
-            sampAddChatMessage('{FFFFFF}Нету доступных обновлений!')
+            sampAddChatMessage('{FFFFFF}РќРµС‚Сѓ РґРѕСЃС‚СѓРїРЅС‹С… РѕР±РЅРѕРІР»РµРЅРёР№!')
         end
 
         sampRegisterChatCommand("tools", function()
@@ -329,10 +329,10 @@ function main()
                 main_window_state.v = false
             end
         end
-        if update_state then -- Если человек напишет /update и обновлени есть, начнётся скаачивание скрипта.
+        if update_state then -- Р•СЃР»Рё С‡РµР»РѕРІРµРє РЅР°РїРёС€РµС‚ /update Рё РѕР±РЅРѕРІР»РµРЅРё РµСЃС‚СЊ, РЅР°С‡РЅС‘С‚СЃСЏ СЃРєР°Р°С‡РёРІР°РЅРёРµ СЃРєСЂРёРїС‚Р°.
             downloadUrlToFile(script_url, script_path, function(id, status)
                 if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage("{FFFFFF}Скрипт {32CD32}успешно {FFFFFF}обновлён.", 0xFF0000)
+                    sampAddChatMessage("{FFFFFF}РЎРєСЂРёРїС‚ {32CD32}СѓСЃРїРµС€РЅРѕ {FFFFFF}РѕР±РЅРѕРІР»С‘РЅ.", 0xFF0000)
                 end
             end)
             break
@@ -366,21 +366,21 @@ function sampev.onSendChat(message)
 end
 
 function sampev.onServerMessage(color, text)
-    if string.find(text, "Вы отыграли за час") and PayDayInfo then
-        local play_time = string.match(text, "Вы отыграли за час (%d+)")
+    if string.find(text, "Р’С‹ РѕС‚С‹РіСЂР°Р»Рё Р·Р° С‡Р°СЃ") and PayDayInfo then
+        local play_time = string.match(text, "Р’С‹ РѕС‚С‹РіСЂР°Р»Рё Р·Р° С‡Р°СЃ (%d+)")
         if tonumber(play_time) < 1500 then
             local calc = 1500 - play_time
             local last_time = calc / 60
             lua_thread.create(function()
                 wait(0)
-                sampAddChatMessage(string.format("• {54b030}[PayDay Info] {FFFFFF}Для получения {FFBF00}PayDay{FFFFFF}, вам осталось - {00BFFF}%d {FFFFFF}мин.", last_time), -1)
+                sampAddChatMessage(string.format("вЂў {54b030}[PayDay Info] {FFFFFF}Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ {FFBF00}PayDay{FFFFFF}, РІР°Рј РѕСЃС‚Р°Р»РѕСЃСЊ - {00BFFF}%d {FFFFFF}РјРёРЅ.", last_time), -1)
             end)
         else
-            sampAddChatMessage("• {54b030}[PayDay Info] {FFFFFF} Воу! Вы уже отыграли нужное кол-во минут для {FFBF00}PayDay{FFFFFF}. Не забудьте забрать его!", -1)
+            sampAddChatMessage("вЂў {54b030}[PayDay Info] {FFFFFF} Р’РѕСѓ! Р’С‹ СѓР¶Рµ РѕС‚С‹РіСЂР°Р»Рё РЅСѓР¶РЅРѕРµ РєРѕР»-РІРѕ РјРёРЅСѓС‚ РґР»СЏ {FFBF00}PayDay{FFFFFF}. РќРµ Р·Р°Р±СѓРґСЊС‚Рµ Р·Р°Р±СЂР°С‚СЊ РµРіРѕ!", -1)
         end
     end
 
-   --[[ if string.find(text, "Вы отыграли за час") and PayDayInfo then
+   --[[ if string.find(text, "Р’С‹ РѕС‚С‹РіСЂР°Р»Рё Р·Р° С‡Р°СЃ") and PayDayInfo then
        -- PayDayInfo = false
         return false
     end]]
@@ -411,8 +411,8 @@ function imgui.OnDrawFrame()
             imgui.SetCursorPos(imgui.ImVec2(0, 20))
             imgui.Image(img, imgui.ImVec2(200, 190))
             if selected == 0 then selected = 1 end
-            if imgui.Button(fa.ICON_FA_INFO_CIRCLE .. u8(" Основная информация"), imgui.ImVec2(170, 25)) then selected = 1 end
-            if imgui.Button(fa.ICON_FA_COGS .. u8(" Настройки"), imgui.ImVec2(170, 25)) then selected = 2 end
+            if imgui.Button(fa.ICON_FA_INFO_CIRCLE .. u8(" РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ"), imgui.ImVec2(170, 25)) then selected = 1 end
+            if imgui.Button(fa.ICON_FA_COGS .. u8(" РќР°СЃС‚СЂРѕР№РєРё"), imgui.ImVec2(170, 25)) then selected = 2 end
           --  imgui.SetCursorPosX(50)
 
            -- imgui.Text(u8("v." .. thisScript().version))
@@ -424,12 +424,12 @@ function imgui.OnDrawFrame()
             if selected == 1 then
                 imgui.SetCursorPos(imgui.ImVec2(5, 3))
 
-                if imgui.Button(fa.ICON_FA_PUZZLE_PIECE .. u8(" Внешний вид"), imgui.ImVec2(155, 35)) then selected = 21 end
+                if imgui.Button(fa.ICON_FA_PUZZLE_PIECE .. u8(" Р’РЅРµС€РЅРёР№ РІРёРґ"), imgui.ImVec2(155, 35)) then selected = 21 end
                 imgui.SameLine()
-                if imgui.Button(fa.ICON_FA_NEWSPAPER .. u8(" Гос.Новости"), imgui.ImVec2(155, 35)) then selected = 22 end
+                if imgui.Button(fa.ICON_FA_NEWSPAPER .. u8(" Р“РѕСЃ.РќРѕРІРѕСЃС‚Рё"), imgui.ImVec2(155, 35)) then selected = 22 end
                 imgui.SameLine()
 
-                if imgui.Button(fa.ICON_FA_PODCAST .. u8(" Меню руководства"), imgui.ImVec2(187, 35)) then
+                if imgui.Button(fa.ICON_FA_PODCAST .. u8(" РњРµРЅСЋ СЂСѓРєРѕРІРѕРґСЃС‚РІР°"), imgui.ImVec2(187, 35)) then
                     management_window.v = not management_window.v
                     imgui.Process = main_window_state.v or management_window.v
                 end
@@ -440,23 +440,23 @@ function imgui.OnDrawFrame()
 
 
                 imgui.SetCursorPosY(233)
-                imgui.Button(fa.ICON_FA_LIST_ALT .. u8(" Список обновлений"), imgui.ImVec2(150, 35))
+                imgui.Button(fa.ICON_FA_LIST_ALT .. u8(" РЎРїРёСЃРѕРє РѕР±РЅРѕРІР»РµРЅРёР№"), imgui.ImVec2(150, 35))
                 imgui.SameLine()
-                if imgui.Button(fa.ICON_FA_CLOUD_DOWNLOAD_ALT .. u8(" Перезапустить скрипт"), imgui.ImVec2(200, 35)) then
+                if imgui.Button(fa.ICON_FA_CLOUD_DOWNLOAD_ALT .. u8(" РџРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ СЃРєСЂРёРїС‚"), imgui.ImVec2(200, 35)) then
                     imgui.OpenPopup("reloadScript")
                 end
                 if imgui.BeginPopup("reloadScript") then
-                    imgui.TextRGB("Вы действительно хотите\nперезапустить скрипт ?")
+                    imgui.TextRGB("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ\nРїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ СЃРєСЂРёРїС‚ ?")
                     imgui.SetCursorPosX(40)
 
-                    if imgui.Button(u8("Да"), imgui.ImVec2(40, 20)) then
+                    if imgui.Button(u8("Р”Р°"), imgui.ImVec2(40, 20)) then
                         imgui.CloseCurrentPopup()
-                        sampAddChatMessage("• {FFD700}[Подсказка]{FFFFFF} Вы успешно перезапустили скрипт", -1)
+                        sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°]{FFFFFF} Р’С‹ СѓСЃРїРµС€РЅРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёР»Рё СЃРєСЂРёРїС‚", -1)
                         reload()
                     end
 
                     imgui.SameLine()
-                    if imgui.Button(u8("Нет"), imgui.ImVec2(40, 20)) then
+                    if imgui.Button(u8("РќРµС‚"), imgui.ImVec2(40, 20)) then
                         imgui.CloseCurrentPopup()
                     end
                     imgui.EndPopup()
@@ -464,23 +464,23 @@ function imgui.OnDrawFrame()
 
                 imgui.SameLine()
 
-                if imgui.Button(fa.ICON_FA_POWER_OFF .. u8(" Выключить скрипт"), imgui.ImVec2(145, 35)) then
+                if imgui.Button(fa.ICON_FA_POWER_OFF .. u8(" Р’С‹РєР»СЋС‡РёС‚СЊ СЃРєСЂРёРїС‚"), imgui.ImVec2(145, 35)) then
                     imgui.OpenPopup("OffScript")
                 end
 
                 if imgui.BeginPopup("OffScript") then
-                    imgui.TextRGB("Вы действительно хотите\nвыключить модификацию ?")
+                    imgui.TextRGB("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ\nРІС‹РєР»СЋС‡РёС‚СЊ РјРѕРґРёС„РёРєР°С†РёСЋ ?")
                     imgui.SetCursorPosX(40)
 
-                    if imgui.Button(u8("Да"), imgui.ImVec2(40, 20)) then
+                    if imgui.Button(u8("Р”Р°"), imgui.ImVec2(40, 20)) then
                         imgui.CloseCurrentPopup()
-                        sampAddChatMessage("• {FFD700}[Подсказка]{FFFFFF} Чтобы запустить скрипт, вам нужно перезайти в игру", -1)
+                        sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°]{FFFFFF} Р§С‚РѕР±С‹ Р·Р°РїСѓСЃС‚РёС‚СЊ СЃРєСЂРёРїС‚, РІР°Рј РЅСѓР¶РЅРѕ РїРµСЂРµР·Р°Р№С‚Рё РІ РёРіСЂСѓ", -1)
                         thisScript():unload()
                         showCursor(false, false)
                     end
 
                     imgui.SameLine()
-                    if imgui.Button(u8("Нет"), imgui.ImVec2(40, 20)) then
+                    if imgui.Button(u8("РќРµС‚"), imgui.ImVec2(40, 20)) then
                         imgui.CloseCurrentPopup()
                     end
                     imgui.EndPopup()
@@ -492,7 +492,7 @@ function imgui.OnDrawFrame()
                --imgui.Separator()
                --imgui.SetCursorPos(imgui.ImVec2(200, 370))
                --imgui.SameLine()
-               --imgui.Text(u8("Версия скрипта - " .. thisScript().version))
+               --imgui.Text(u8("Р’РµСЂСЃРёСЏ СЃРєСЂРёРїС‚Р° - " .. thisScript().version))
                --imgui.SameLine()
                --imgui.SetCursorPos(imgui.ImVec2(440, 370))
 
@@ -502,27 +502,27 @@ function imgui.OnDrawFrame()
                 imgui.Columns(2, "##settings", false)
 
                 
-                imgui.Text(u8("Ваш основной префикс:"))
+                imgui.Text(u8("Р’Р°С€ РѕСЃРЅРѕРІРЅРѕР№ РїСЂРµС„РёРєСЃ:"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Ваш префикс будет показыватьcя обычном чате."))
+                imgui.TextQuestion(u8("Р’Р°С€ РїСЂРµС„РёРєСЃ Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊcСЏ РѕР±С‹С‡РЅРѕРј С‡Р°С‚Рµ."))
                 imgui.PushItemWidth(250)
                 imgui.InputText(u8"##local_tag", text_prefix)
                 imgui.PopItemWidth()
                 imgui.SameLine()
                 imgui.Checkbox("##box_local_tag", active_prefix)
                 
-                imgui.Text(u8("Ваш префикс локальной рации (/r):"))
+                imgui.Text(u8("Р’Р°С€ РїСЂРµС„РёРєСЃ Р»РѕРєР°Р»СЊРЅРѕР№ СЂР°С†РёРё (/r):"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Ваш префикс будет показываться в начале Вашего сообщения /r."))
+                imgui.TextQuestion(u8("Р’Р°С€ РїСЂРµС„РёРєСЃ Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊСЃСЏ РІ РЅР°С‡Р°Р»Рµ Р’Р°С€РµРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ /r."))
                 imgui.PushItemWidth(250)
                 imgui.InputText(u8"##r_tag", text_prefix_r)
                 imgui.PopItemWidth()
                 imgui.SameLine()
                 imgui.Checkbox("##box_r_tag", active_prefix_r)
 
-                imgui.Text(u8("Ваш префикс глобальной рации (/f):"))
+                imgui.Text(u8("Р’Р°С€ РїСЂРµС„РёРєСЃ РіР»РѕР±Р°Р»СЊРЅРѕР№ СЂР°С†РёРё (/f):"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Ваш префикс будет показываться в начале Вашего сообщения /f."))
+                imgui.TextQuestion(u8("Р’Р°С€ РїСЂРµС„РёРєСЃ Р±СѓРґРµС‚ РїРѕРєР°Р·С‹РІР°С‚СЊСЃСЏ РІ РЅР°С‡Р°Р»Рµ Р’Р°С€РµРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ /f."))
                 imgui.PushItemWidth(250)
                 imgui.InputText(u8"##f_tag", text_prefix_f)
                 imgui.PopItemWidth()
@@ -531,9 +531,9 @@ function imgui.OnDrawFrame()
 
                 imgui.NextColumn()
                 
-                imgui.Text(u8("Показ. оверлей:"))
+                imgui.Text(u8("РџРѕРєР°Р·. РѕРІРµСЂР»РµР№:"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Панель с полезной информацией"))
+                imgui.TextQuestion(u8("РџР°РЅРµР»СЊ СЃ РїРѕР»РµР·РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№"))
                
                 imgui.SameLine(150)
                 if imgui.ToggleButton("", overlay) then
@@ -541,18 +541,18 @@ function imgui.OnDrawFrame()
                     inicfg.save(mainIni,directIni)
                 end
                 
-                imgui.Text(u8("Перем. оверлей:"))
+                imgui.Text(u8("РџРµСЂРµРј. РѕРІРµСЂР»РµР№:"))
                 imgui.SameLine()
                                 
-                imgui.TextQuestion(u8("Возможность перемещать оверлей"))
+                imgui.TextQuestion(u8("Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРµСЂРµРјРµС‰Р°С‚СЊ РѕРІРµСЂР»РµР№"))
 
                 imgui.SameLine(150)                
                 imgui.ToggleButton("   ", setPosOverlay)
 
-                imgui.Text(u8("Основного меню:"))
+                imgui.Text(u8("РћСЃРЅРѕРІРЅРѕРіРѕ РјРµРЅСЋ:"))
                -- imgui.SetCursorPos(imgui.ImVec2(250, 250))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Для открытия главного меню скрипта"))
+                imgui.TextQuestion(u8("Р”Р»СЏ РѕС‚РєСЂС‹С‚РёСЏ РіР»Р°РІРЅРѕРіРѕ РјРµРЅСЋ СЃРєСЂРёРїС‚Р°"))
                 imgui.SameLine(150)                
 
                 if imgui.HotKey("##1", mainWindow, tLastKeys, 100) then
@@ -566,7 +566,7 @@ function imgui.OnDrawFrame()
 
                 imgui.Text(u8("PayDay:"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Возможность посмотреть, сколько\nосталось отыграть для получения PayDay"))
+                imgui.TextQuestion(u8("Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕСЃРјРѕС‚СЂРµС‚СЊ, СЃРєРѕР»СЊРєРѕ\nРѕСЃС‚Р°Р»РѕСЃСЊ РѕС‚С‹РіСЂР°С‚СЊ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ PayDay"))
                 imgui.SameLine(150)
                 if imgui.HotKey("##2", timeInfo, tLastKeys, 100) then
                     rkeys.changeHotKey(bindTime, timeInfo.v)
@@ -574,9 +574,9 @@ function imgui.OnDrawFrame()
                     inicfg.save(hotkeyIni, directHotkeyIni)
                 end
 
-                imgui.Text(u8("Меню Руководства:"))
+                imgui.Text(u8("РњРµРЅСЋ Р СѓРєРѕРІРѕРґСЃС‚РІР°:"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Чтобы открыть быстрое меню Руководства"))
+                imgui.TextQuestion(u8("Р§С‚РѕР±С‹ РѕС‚РєСЂС‹С‚СЊ Р±С‹СЃС‚СЂРѕРµ РјРµРЅСЋ Р СѓРєРѕРІРѕРґСЃС‚РІР°"))
                 imgui.SameLine(150)
                 if imgui.HotKey("##3", managWindow, tLastKeys, 100) then
                     rkeys.changeHotKey(bindManag, managWindow.v)
@@ -584,9 +584,9 @@ function imgui.OnDrawFrame()
                     inicfg.save(hotkeyIni, directHotkeyIni)
                 end
 
-                imgui.Text(u8("Личный транспорт:"))
+                imgui.Text(u8("Р›РёС‡РЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚:"))
                 imgui.SameLine()
-                imgui.TextQuestion(u8("Чтобы открыть личный транспорт"))
+                imgui.TextQuestion(u8("Р§С‚РѕР±С‹ РѕС‚РєСЂС‹С‚СЊ Р»РёС‡РЅС‹Р№ С‚СЂР°РЅСЃРїРѕСЂС‚"))
                 imgui.SameLine(150)
                 if imgui.HotKey("##4", lockMyCar, tLastKeys, 100) then
                     rkeys.changeHotKey(bindLockMyCar, lockMyCar.v)
@@ -608,35 +608,35 @@ function imgui.OnDrawFrame()
           if selected == 21 then
                 imgui.Columns(2, "##2222", false)
 
-                imgui.RadioButton(u8("Синяя"), themeNumber, 1)
-                imgui.RadioButton(u8("Красная"), themeNumber, 2)
-                imgui.RadioButton(u8("Коричневая"), themeNumber, 3)
-                imgui.RadioButton(u8("Аква"), themeNumber, 4)
-                imgui.RadioButton(u8("Чёрная"), themeNumber, 5)
-                imgui.RadioButton(u8("Фиолетовая"), themeNumber, 6)
-                imgui.RadioButton(u8("Черно-оранжевая"), themeNumber, 7)
-                imgui.RadioButton(u8("Светло-темная"), themeNumber, 8)
-                imgui.RadioButton(u8("Серая"), themeNumber, 9)
+                imgui.RadioButton(u8("РЎРёРЅСЏСЏ"), themeNumber, 1)
+                imgui.RadioButton(u8("РљСЂР°СЃРЅР°СЏ"), themeNumber, 2)
+                imgui.RadioButton(u8("РљРѕСЂРёС‡РЅРµРІР°СЏ"), themeNumber, 3)
+                imgui.RadioButton(u8("РђРєРІР°"), themeNumber, 4)
+                imgui.RadioButton(u8("Р§С‘СЂРЅР°СЏ"), themeNumber, 5)
+                imgui.RadioButton(u8("Р¤РёРѕР»РµС‚РѕРІР°СЏ"), themeNumber, 6)
+                imgui.RadioButton(u8("Р§РµСЂРЅРѕ-РѕСЂР°РЅР¶РµРІР°СЏ"), themeNumber, 7)
+                imgui.RadioButton(u8("РЎРІРµС‚Р»Рѕ-С‚РµРјРЅР°СЏ"), themeNumber, 8)
+                imgui.RadioButton(u8("РЎРµСЂР°СЏ"), themeNumber, 9)
                 imgui.NextColumn()
-                imgui.RadioButton(u8("Вишневая"), themeNumber, 10)
-                imgui.RadioButton(u8("Светло-красная"), themeNumber, 11)
-                imgui.RadioButton(u8("Темно-красная"), themeNumber, 12)
-                imgui.RadioButton(u8("Монохром"), themeNumber, 13)
-                imgui.RadioButton(u8("Ярко-синяя"), themeNumber, 14)
-                imgui.RadioButton(u8("Белая"), themeNumber, 15)
-                imgui.RadioButton(u8("Салатовая"), themeNumber, 16)
-                imgui.RadioButton(u8("Темно-зеленая"), themeNumber, 17)
-                imgui.RadioButton(u8("Темно-синяя"), themeNumber, 18)
+                imgui.RadioButton(u8("Р’РёС€РЅРµРІР°СЏ"), themeNumber, 10)
+                imgui.RadioButton(u8("РЎРІРµС‚Р»Рѕ-РєСЂР°СЃРЅР°СЏ"), themeNumber, 11)
+                imgui.RadioButton(u8("РўРµРјРЅРѕ-РєСЂР°СЃРЅР°СЏ"), themeNumber, 12)
+                imgui.RadioButton(u8("РњРѕРЅРѕС…СЂРѕРј"), themeNumber, 13)
+                imgui.RadioButton(u8("РЇСЂРєРѕ-СЃРёРЅСЏСЏ"), themeNumber, 14)
+                imgui.RadioButton(u8("Р‘РµР»Р°СЏ"), themeNumber, 15)
+                imgui.RadioButton(u8("РЎР°Р»Р°С‚РѕРІР°СЏ"), themeNumber, 16)
+                imgui.RadioButton(u8("РўРµРјРЅРѕ-Р·РµР»РµРЅР°СЏ"), themeNumber, 17)
+                imgui.RadioButton(u8("РўРµРјРЅРѕ-СЃРёРЅСЏСЏ"), themeNumber, 18)
                 imgui.Columns()
                 imgui.Separator()
                 imgui.Text("")
                 imgui.SameLine(235)
-                imgui.Text(u8("Стиль"))
+                imgui.Text(u8("РЎС‚РёР»СЊ"))
                 imgui.Separator()
                 imgui.Columns(2, "##ll", false)
-                imgui.RadioButton(u8("Строгий"), styleNumber, 1)
+                imgui.RadioButton(u8("РЎС‚СЂРѕРіРёР№"), styleNumber, 1)
                 imgui.NextColumn()
-                imgui.RadioButton(u8("Мягкий"), styleNumber, 2)
+                imgui.RadioButton(u8("РњСЏРіРєРёР№"), styleNumber, 2)
                 imgui.Columns()
                 mainIni.config.themeNumber = themeNumber.v
                 mainIni.config.styleNumber = styleNumber.v
@@ -646,16 +646,16 @@ function imgui.OnDrawFrame()
             if selected == 22 then
                 local lef = 10
                 imgui.SetCursorPos(imgui.ImVec2(lef-3, 8))
-                imgui.Text(u8'Гос. новости для:') imgui.SameLine()
+                imgui.Text(u8'Р“РѕСЃ. РЅРѕРІРѕСЃС‚Рё РґР»СЏ:') imgui.SameLine()
                 imgui.PushItemWidth(153) imgui.SetCursorPosY(7)
                 imgui.Combo('##SelGnews', SelGnews, arr_gnews, #arr_gnews)
                 for i = 1, 8 do
                     if SelGnews.v == i then
                         imgui.SetCursorPosY(30) imgui.Separator() imgui.SetCursorPos(imgui.ImVec2(lef-3, 38))
-                        imgui.Text(u8'3-х строчный /gnews') imgui.SameLine() imgui.SetCursorPosY(34)
-                        if imgui.Button(u8'Отправить 3 строки') then
+                        imgui.Text(u8'3-С… СЃС‚СЂРѕС‡РЅС‹Р№ /gnews') imgui.SameLine() imgui.SetCursorPosY(34)
+                        if imgui.Button(u8'РћС‚РїСЂР°РІРёС‚СЊ 3 СЃС‚СЂРѕРєРё') then
                             lua_thread.create(function()
-                                    sampSendChat('/l Вещаю.')
+                                    sampSendChat('/l Р’РµС‰Р°СЋ.')
                                     wait(2200)
                                 for str in u8:decode(GNews[i].text3):gmatch('[^\n\r]+') do
                                     sampAddChatMessage('/gnews '..str, -1)
@@ -665,7 +665,7 @@ function imgui.OnDrawFrame()
                                     sampSendChat('/time')
                             end)
                         end imgui.SameLine()
-                        imgui.SetCursorPos(imgui.ImVec2(268, 34)) imgui.Text(u8'Задержка:') imgui.SameLine() imgui.PushItemWidth(40)
+                        imgui.SetCursorPos(imgui.ImVec2(268, 34)) imgui.Text(u8'Р—Р°РґРµСЂР¶РєР°:') imgui.SameLine() imgui.PushItemWidth(40)
                         imgui.SetCursorPos(imgui.ImVec2(337, 35))
                         if imgui.InputText(u8'##DelayGnews'..i, GnewsDelay[i]) then
                             GNews[i].delay = GnewsDelay[i].v
@@ -675,16 +675,16 @@ function imgui.OnDrawFrame()
                             GNews[i].text3 = GnewsText3[i].v
                             saveJsonG()
                         end imgui.SetCursorPosY(120)
-                        imgui.TextRGB('Напоминание', 2)
+                        imgui.TextRGB('РќР°РїРѕРјРёРЅР°РЅРёРµ', 2)
                         imgui.PushItemWidth(371) imgui.SetCursorPosX(lef-3)
                         if imgui.InputTextMultiline(u8'##NapomGnews'..i, GnewsText1[i], imgui.ImVec2(500, 59)) then
                             GNews[i].text1 = GnewsText1[i].v
                             saveJsonG()
                         end imgui.SetCursorPosX(lef)
-                        if imgui.Button(u8'Напом (Не освобождаю)') then
+                        if imgui.Button(u8'РќР°РїРѕРј (РќРµ РѕСЃРІРѕР±РѕР¶РґР°СЋ)') then
                             lua_thread.create(function()
 
-                                sampSendChat('/l Вещаю.')
+                                sampSendChat('/l Р’РµС‰Р°СЋ.')
                                     wait(2200)
                                 for str in u8:decode(GNews[i].text1):gmatch('[^\n\r]+') do
                                     sampAddChatMessage('/gnews '..str, -1)
@@ -694,16 +694,16 @@ function imgui.OnDrawFrame()
                                     sampSendChat('/time')
 
 
-                                --sampSendChat('/l Вещаю, не освобождаю.')
+                                --sampSendChat('/l Р’РµС‰Р°СЋ, РЅРµ РѕСЃРІРѕР±РѕР¶РґР°СЋ.')
                                 --wait(2200)
                                 --sampAddChatMessage('/gnews '..u8:decode(GnewsText1[i].v))
                                 --wait(200)
                                 --sampSendChat('/time')
                             end)
                         end imgui.SameLine() imgui.Text('                   ') imgui.SameLine()
-                        if imgui.Button(u8'Напом (Освобождаю)') then
+                        if imgui.Button(u8'РќР°РїРѕРј (РћСЃРІРѕР±РѕР¶РґР°СЋ)') then
                             lua_thread.create(function()
-                                sampSendChat('/l Вещаю.')
+                                sampSendChat('/l Р’РµС‰Р°СЋ.')
                                     wait(2200)
                                 for str in u8:decode(GNews[i].text1):gmatch('[^\n\r]+') do
                                     sampAddChatMessage('/gnews '..str, -1)
@@ -730,12 +730,12 @@ function imgui.OnDrawFrame()
         local pos = imgui.GetWindowPos()
         imgui.SetNextWindowPos(imgui.ImVec2(iScreenWidth / 1.15, iScreenHeight / 2.8), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5))
         imgui.SetNextWindowSize(imgui.ImVec2(250, 125), imgui.Cond.FirstUseEver)
-        imgui.Begin(u8"Информационная панель", overlays, (not setPosOverlay.v and imgui.WindowFlags.NoMove or 0) + imgui.WindowFlags.NoResize + imgui.WindowFlags.ShowBorders + imgui.WindowFlags.NoCollapse)
+        imgui.Begin(u8"РРЅС„РѕСЂРјР°С†РёРѕРЅРЅР°СЏ РїР°РЅРµР»СЊ", overlays, (not setPosOverlay.v and imgui.WindowFlags.NoMove or 0) + imgui.WindowFlags.NoResize + imgui.WindowFlags.ShowBorders + imgui.WindowFlags.NoCollapse)
         imgui.Text(u8(change_tags("{mynick} [{myid}] | Ping: {ping}", change)))
-        imgui.Text(u8(change_tags("Квадрат: {kvadrat}", change)))
-        imgui.Text(u8(change_tags("Район: {area}", change)))
+        imgui.Text(u8(change_tags("РљРІР°РґСЂР°С‚: {kvadrat}", change)))
+        imgui.Text(u8(change_tags("Р Р°Р№РѕРЅ: {area}", change)))
         imgui.Separator()
-        imgui.Text(u8(change_tags("Игрок: {selectInfoOverlay}", change)))
+        imgui.Text(u8(change_tags("РРіСЂРѕРє: {selectInfoOverlay}", change)))
        -- imgui.Text(pos)
         --imgui.Text(u8(nickNameRP .." [".. myID .."] | Ping: " .. ping))
         --sampSendChat(change_tags(mainIni.config.arrest, change), -1)
@@ -756,37 +756,37 @@ function imgui.OnDrawFrame()
         imgui.SetNextWindowSize(imgui.ImVec2(330, 402), imgui.Cond.FirstUseEver)
         imgui.Begin("Management", management_window, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.NoResize + imgui.WindowFlags.AlwaysUseWindowPadding + imgui.WindowFlags.NoScrollWithMouse)
         imgui.BeginChild("menu", imgui.ImVec2(0, 0))
-        if imgui.Button(u8("Принять в организацию"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РџСЂРёРЅСЏС‚СЊ РІ РѕСЂРіР°РЅРёР·Р°С†РёСЋ"), imgui.ImVec2(330, 30)) then
             inviteFunc(1)
         end
-        if imgui.Button(u8("Уволить из организации"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РЈРІРѕР»РёС‚СЊ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё"), imgui.ImVec2(330, 30)) then
             uninviteFunc(1)
         end
-        if imgui.Button(u8("Уволить из организации (offline)"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РЈРІРѕР»РёС‚СЊ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё (offline)"), imgui.ImVec2(330, 30)) then
             uninviteoffFunc(1)
         end
-        if imgui.Button(u8("Изменить ранг"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РР·РјРµРЅРёС‚СЊ СЂР°РЅРі"), imgui.ImVec2(330, 30)) then
             rangFunc(1)
         end
-        if imgui.Button(u8("Изменить скин"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РР·РјРµРЅРёС‚СЊ СЃРєРёРЅ"), imgui.ImVec2(330, 30)) then
             setskinFunc(1)
         end
-        if imgui.Button(u8("Изменить отдел"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РР·РјРµРЅРёС‚СЊ РѕС‚РґРµР»"), imgui.ImVec2(330, 30)) then
             divisionFunc(1)
         end
-        if imgui.Button(u8("Выдать выговор"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("Р’С‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ"), imgui.ImVec2(330, 30)) then
             fwarnFunc(1)
         end
-        if imgui.Button(u8("Выдать выговор (offline)"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("Р’С‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ (offline)"), imgui.ImVec2(330, 30)) then
             fwarnoffFunc(1)
         end
-        if imgui.Button(u8("Снять выговор"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("РЎРЅСЏС‚СЊ РІС‹РіРѕРІРѕСЂ"), imgui.ImVec2(330, 30)) then
             unfwarnFunc(1)
         end
-        if imgui.Button(u8("Вынести/Занести в Черный Список"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("Р’С‹РЅРµСЃС‚Рё/Р—Р°РЅРµСЃС‚Рё РІ Р§РµСЂРЅС‹Р№ РЎРїРёСЃРѕРє"), imgui.ImVec2(330, 30)) then
             blackFunc(1)
         end
-        if imgui.Button(u8("Вынести/Занести в Черный Список (offline)"), imgui.ImVec2(330, 30)) then
+        if imgui.Button(u8("Р’С‹РЅРµСЃС‚Рё/Р—Р°РЅРµСЃС‚Рё РІ Р§РµСЂРЅС‹Р№ РЎРїРёСЃРѕРє (offline)"), imgui.ImVec2(330, 30)) then
             offblackFunc(1)
         end
         imgui.EndChild()
@@ -876,7 +876,7 @@ function TimeScreen()
     end)
 end
 
- -- #####################Команды######################
+ -- #####################РљРѕРјР°РЅРґС‹######################
 
 
 function division(param)
@@ -887,21 +887,21 @@ function division(param)
                 sendChat("/division {myid}")
             else
                 if sampIsPlayerConnected(id) then
-                    sampSendChat("/me засунув руку в правый карман, достал телефон")
+                    sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                     wait(400)
-                    sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                    sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                     wait(400)
-                    sampSendChat("/me введя имя, фамилию и отдел, нажал на кнопку «Изменить»")
+                    sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РѕС‚РґРµР», РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
                     wait(400)
-                    sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                    sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                     wait(2000)
                     sampSendChat("/division " .. id)
                 else
-                    sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                    sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
                 end
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/division [ID]{FFFFFF}, чтобы изменить отдел", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/division [ID]{FFFFFF}, С‡С‚РѕР±С‹ РёР·РјРµРЅРёС‚СЊ РѕС‚РґРµР»", -1)
         end
     end)
 end
@@ -913,13 +913,13 @@ function divisionFunc(param)
                 sampSetChatInputText("/division ")
                 sampSetChatInputEnabled(true)
             else
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и отдел, нажал на кнопку «Изменить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РѕС‚РґРµР», РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sendChat("/division {selectID}")
             end
@@ -929,58 +929,58 @@ end
 
 function dialog()
     lua_thread.create(function()
-            sampSendChat("Здравствуйте!")
+            sampSendChat("Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!")
             wait(2000)
-            sampSendChat("/do Продавец: Здравствуйте, слушаю Вас.")
+            sampSendChat("/do РџСЂРѕРґР°РІРµС†: Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, СЃР»СѓС€Р°СЋ Р’Р°СЃ.")
             wait(2000)
-            sampSendChat("Я хотел бы купить у вас маленькую нагрудную камеру.")
+            sampSendChat("РЇ С…РѕС‚РµР» Р±С‹ РєСѓРїРёС‚СЊ Сѓ РІР°СЃ РјР°Р»РµРЅСЊРєСѓСЋ РЅР°РіСЂСѓРґРЅСѓСЋ РєР°РјРµСЂСѓ.")
             wait(2000)
-            sampSendChat("Имеются в наличии?")
+            sampSendChat("РРјРµСЋС‚СЃСЏ РІ РЅР°Р»РёС‡РёРё?")
             wait(2000)
-            sampSendChat("/do Продавец: Да, как раз осталось несколько штук.")
+            sampSendChat("/do РџСЂРѕРґР°РІРµС†: Р”Р°, РєР°Рє СЂР°Р· РѕСЃС‚Р°Р»РѕСЃСЊ РЅРµСЃРєРѕР»СЊРєРѕ С€С‚СѓРє.")
             wait(2000)
-            sampSendChat("/do Продавец: Вам нужна только одна?")
+            sampSendChat("/do РџСЂРѕРґР°РІРµС†: Р’Р°Рј РЅСѓР¶РЅР° С‚РѕР»СЊРєРѕ РѕРґРЅР°?")
             wait(2000)
-            sampSendChat("Да, мне одной хватит, сколько будет стоять?")
+            sampSendChat("Р”Р°, РјРЅРµ РѕРґРЅРѕР№ С…РІР°С‚РёС‚, СЃРєРѕР»СЊРєРѕ Р±СѓРґРµС‚ СЃС‚РѕСЏС‚СЊ?")
             wait(2000)
-            sampSendChat("/do Продавец: С вас 10.000$.")
+            sampSendChat("/do РџСЂРѕРґР°РІРµС†: РЎ РІР°СЃ 10.000$.")
             wait(2000)
-            sampSendChat("/do У Руби в кармане лежил кошелёк")
+            sampSendChat("/do РЈ Р СѓР±Рё РІ РєР°СЂРјР°РЅРµ Р»РµР¶РёР» РєРѕС€РµР»С‘Рє")
             wait(2000)
-            sampSendChat("/me достал кошелёк, после открыл его")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РєРѕС€РµР»С‘Рє, РїРѕСЃР»Рµ РѕС‚РєСЂС‹Р» РµРіРѕ")
             wait(2000)
-            sampSendChat("/me достал несколько купюр в сумме 10.000$")
+            sampSendChat("/me РґРѕСЃС‚Р°Р» РЅРµСЃРєРѕР»СЊРєРѕ РєСѓРїСЋСЂ РІ СЃСѓРјРјРµ 10.000$")
             wait(2000)
-            sampSendChat("/me передал деньги продавцу")
+            sampSendChat("/me РїРµСЂРµРґР°Р» РґРµРЅСЊРіРё РїСЂРѕРґР°РІС†Сѓ")
             wait(2000)
-            sampSendChat("/do Продавец взяла деньги, затем передала камеру")
+            sampSendChat("/do РџСЂРѕРґР°РІРµС† РІР·СЏР»Р° РґРµРЅСЊРіРё, Р·Р°С‚РµРј РїРµСЂРµРґР°Р»Р° РєР°РјРµСЂСѓ")
             wait(2000)
-            sampSendChat("/me взял камеру")
+            sampSendChat("/me РІР·СЏР» РєР°РјРµСЂСѓ")
             wait(2000)
-            sampSendChat("Спасибо, всего хорошего! До свидания.")
+            sampSendChat("РЎРїР°СЃРёР±Рѕ, РІСЃРµРіРѕ С…РѕСЂРѕС€РµРіРѕ! Р”Рѕ СЃРІРёРґР°РЅРёСЏ.")
     end)
 end
 
 function inviteFunc(param)
     lua_thread.create(function()
-        if param == 1 then -- в окне management
+        if param == 1 then -- РІ РѕРєРЅРµ management
             if playerid == nil then
                 sampSetChatInputText("/invite ")
                 sampSetChatInputEnabled(true)
             else
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя и фамилию, нажал на кнопку «Добавить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ Рё С„Р°РјРёР»РёСЋ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р”РѕР±Р°РІРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(400)
-                sampSendChat("/do На плече висит рабочая сумка, в которой лежит чистая форма.")
+                sampSendChat("/do РќР° РїР»РµС‡Рµ РІРёСЃРёС‚ СЂР°Р±РѕС‡Р°СЏ СЃСѓРјРєР°, РІ РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ С‡РёСЃС‚Р°СЏ С„РѕСЂРјР°.")
                 wait(400)
-                sampSendChat("/me приоткрыв сумку, достал чистую форму")
+                sampSendChat("/me РїСЂРёРѕС‚РєСЂС‹РІ СЃСѓРјРєСѓ, РґРѕСЃС‚Р°Р» С‡РёСЃС‚СѓСЋ С„РѕСЂРјСѓ")
                 wait(400)
-                sampSendChat("/todo Вот, ваша форма.*передавая форму человеку напротив")
+                sampSendChat("/todo Р’РѕС‚, РІР°С€Р° С„РѕСЂРјР°.*РїРµСЂРµРґР°РІР°СЏ С„РѕСЂРјСѓ С‡РµР»РѕРІРµРєСѓ РЅР°РїСЂРѕС‚РёРІ")
                 wait(2000)
                 sampSendChat(change_tags("/invite {selectID}", change), -1)
             end
@@ -993,44 +993,44 @@ function invite(param)
         local id = tonumber(param)
         if param and id ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя и фамилию, нажал на кнопку «Добавить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ Рё С„Р°РјРёР»РёСЋ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р”РѕР±Р°РІРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(400)
-                sampSendChat("/do На плече висит рабочая сумка, в которой лежит чистая форма.")
+                sampSendChat("/do РќР° РїР»РµС‡Рµ РІРёСЃРёС‚ СЂР°Р±РѕС‡Р°СЏ СЃСѓРјРєР°, РІ РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ С‡РёСЃС‚Р°СЏ С„РѕСЂРјР°.")
                 wait(400)
-                sampSendChat("/me приоткрыв сумку, достал чистую форму")
+                sampSendChat("/me РїСЂРёРѕС‚РєСЂС‹РІ СЃСѓРјРєСѓ, РґРѕСЃС‚Р°Р» С‡РёСЃС‚СѓСЋ С„РѕСЂРјСѓ")
                 wait(400)
-                sampSendChat("/todo Вот, ваша форма.*передавая форму человеку напротив")
+                sampSendChat("/todo Р’РѕС‚, РІР°С€Р° С„РѕСЂРјР°.*РїРµСЂРµРґР°РІР°СЏ С„РѕСЂРјСѓ С‡РµР»РѕРІРµРєСѓ РЅР°РїСЂРѕС‚РёРІ")
                 wait(2000)
                 sampSendChat("/invite " .. id)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/invite [ID]{FFFFFF}, чтобы принять во фракцию", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/invite [ID]{FFFFFF}, С‡С‚РѕР±С‹ РїСЂРёРЅСЏС‚СЊ РІРѕ С„СЂР°РєС†РёСЋ", -1)
         end
     end)
 end
 
 function rangFunc(param)
     lua_thread.create(function()
-        if param == 1 then -- в окне management
+        if param == 1 then -- РІ РѕРєРЅРµ management
             if playerid == nil then
                 sampSetChatInputText("/rang ")
                 sampSetChatInputEnabled(true)
             else
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и должность, нажал на кнопку «Изменить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РґРѕР»Р¶РЅРѕСЃС‚СЊ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sendChat("/rang {selectID}")
              --   sampSendChat(change_tags("/rang {selectID}", change), -1)
@@ -1044,20 +1044,20 @@ function rang(param)
         local id = tonumber(param)
         if param and id ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и должность, нажал на кнопку «Изменить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РґРѕР»Р¶РЅРѕСЃС‚СЊ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РР·РјРµРЅРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sampSendChat("/rang " .. id)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/rang [ID]{FFFFFF}, чтобы изменить ранг", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/rang [ID]{FFFFFF}, С‡С‚РѕР±С‹ РёР·РјРµРЅРёС‚СЊ СЂР°РЅРі", -1)
         end
     end)
 end
@@ -1077,20 +1077,20 @@ function uninvite(param)
         local id, reason = string.match(param, "(%d+) (.+)")
         if param:len() > 0 and id ~= nil and reason ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Удалить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЈРґР°Р»РёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sampSendChat("/uninvite " .. id .. " " .. reason)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/uninvite [ID] [Причина]{FFFFFF}, чтобы уволить из организации", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/uninvite [ID] [РџСЂРёС‡РёРЅР°]{FFFFFF}, С‡С‚РѕР±С‹ СѓРІРѕР»РёС‚СЊ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё", -1)
         end
     end)
 end
@@ -1110,20 +1110,20 @@ function uninviteoff()
         local id, reason = string.match(param, "(.+) (.+)")
         if param:len() > 0 and id ~= nil and reason ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Сотрудники»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРѕС‚СЂСѓРґРЅРёРєРёВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Удалить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЈРґР°Р»РёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sampSendChat("/uninviteoff " .. id .. " " .. reason)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/uninviteoff [ID]{FFFFFF}, чтобы уволить из организации [offline]", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/uninviteoff [ID]{FFFFFF}, С‡С‚РѕР±С‹ СѓРІРѕР»РёС‚СЊ РёР· РѕСЂРіР°РЅРёР·Р°С†РёРё [offline]", -1)
         end
     end)
 end
@@ -1135,11 +1135,11 @@ function setskinFunc(param)
                 sampSetChatInputText("/setskin ")
                 sampSetChatInputEnabled(true)
             else
-                sampSendChat("/do На плече висит рабочая сумка, в которой лежит чистая форма.")
+                sampSendChat("/do РќР° РїР»РµС‡Рµ РІРёСЃРёС‚ СЂР°Р±РѕС‡Р°СЏ СЃСѓРјРєР°, РІ РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ С‡РёСЃС‚Р°СЏ С„РѕСЂРјР°.")
                 wait(400)
-                sampSendChat("/me приоткрыв сумку, достал чистую форму")
+                sampSendChat("/me РїСЂРёРѕС‚РєСЂС‹РІ СЃСѓРјРєСѓ, РґРѕСЃС‚Р°Р» С‡РёСЃС‚СѓСЋ С„РѕСЂРјСѓ")
                 wait(400)
-                sampSendChat("/todo Вот, ваша форма.*передавая форму человеку напротив")
+                sampSendChat("/todo Р’РѕС‚, РІР°С€Р° С„РѕСЂРјР°.*РїРµСЂРµРґР°РІР°СЏ С„РѕСЂРјСѓ С‡РµР»РѕРІРµРєСѓ РЅР°РїСЂРѕС‚РёРІ")
                 wait(2000)
                 sampSendChat(change_tags("/setskin {selectID}", change), -1)
             end
@@ -1155,19 +1155,19 @@ function setskin(param)
                 sampSendChat("/setskin " .. id)
             else
                 if sampIsPlayerConnected(id) then
-                   sampSendChat("/do На плече висит рабочая сумка, в которой лежит чистая форма.")
+                   sampSendChat("/do РќР° РїР»РµС‡Рµ РІРёСЃРёС‚ СЂР°Р±РѕС‡Р°СЏ СЃСѓРјРєР°, РІ РєРѕС‚РѕСЂРѕР№ Р»РµР¶РёС‚ С‡РёСЃС‚Р°СЏ С„РѕСЂРјР°.")
                     wait(400)
-                    sampSendChat("/me приоткрыв сумку, достал чистую форму")
+                    sampSendChat("/me РїСЂРёРѕС‚РєСЂС‹РІ СЃСѓРјРєСѓ, РґРѕСЃС‚Р°Р» С‡РёСЃС‚СѓСЋ С„РѕСЂРјСѓ")
                     wait(400)
-                    sampSendChat("/todo Вот, ваша форма.*передавая форму человеку напротив")
+                    sampSendChat("/todo Р’РѕС‚, РІР°С€Р° С„РѕСЂРјР°.*РїРµСЂРµРґР°РІР°СЏ С„РѕСЂРјСѓ С‡РµР»РѕРІРµРєСѓ РЅР°РїСЂРѕС‚РёРІ")
                     wait(2000)
                     sampSendChat("/setskin " .. id)
                 else
-                    sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                    sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
                 end
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/setskin [ID]{FFFFFF}, чтобы изменить скин", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/setskin [ID]{FFFFFF}, С‡С‚РѕР±С‹ РёР·РјРµРЅРёС‚СЊ СЃРєРёРЅ", -1)
         end
     end)
 end
@@ -1176,17 +1176,17 @@ function unfwarn(param)
     lua_thread.create(function()
         local id, reason = string.match(param, "(%d+) (.+)")
         if param:len() > 0 then
-            sampSendChat("/me засунув руку в правый карман, достал телефон")
+            sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
             wait(400)
-            sampSendChat("/me открыв приложение организации, нажал на кнопку «Выговоры»")
+            sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р’С‹РіРѕРІРѕСЂС‹В»")
             wait(400)
-            sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Снять»")
+            sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РЎРЅСЏС‚СЊВ»")
             wait(400)
-            sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+            sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
             wait(2000)
             sampSendChat("/unfwarn " .. id .. " " .. reason)
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/unfwarn [ID] [Причина]{FFFFFF}, чтобы снять выговор", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/unfwarn [ID] [РџСЂРёС‡РёРЅР°]{FFFFFF}, С‡С‚РѕР±С‹ СЃРЅСЏС‚СЊ РІС‹РіРѕРІРѕСЂ", -1)
         end
     end)
 end
@@ -1241,20 +1241,20 @@ function fwarn(param)
         local id, reason = string.match(param, "(%d+) (.+)")
         if param:len() > 0 and id ~= nil and reason ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Выговоры»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р’С‹РіРѕРІРѕСЂС‹В»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Выдать»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р’С‹РґР°С‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sampSendChat("/fwarn " .. id .. " " .. reason)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/fwarn [ID] [Причина]{FFFFFF}, чтобы выдать выговор", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/fwarn [ID] [РџСЂРёС‡РёРЅР°]{FFFFFF}, С‡С‚РѕР±С‹ РІС‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ", -1)
         end
     end)
 end
@@ -1263,17 +1263,17 @@ function fwarnoff(param)
     lua_thread.create(function()
         local name, reason = string.match(param, "(.+) (.+)")
         if param:len() > 0 then
-            sampSendChat("/me засунув руку в правый карман, достал телефон")
+            sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
             wait(400)
-            sampSendChat("/me открыв приложение организации, нажал на кнопку «Выговоры»")
+            sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р’С‹РіРѕРІРѕСЂС‹В»")
             wait(400)
-            sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Выдать»")
+            sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р’С‹РґР°С‚СЊВ»")
             wait(400)
-            sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+            sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
             wait(2000)
             sampSendChat("/fwarnoff " .. name .. " " .. reason)
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/fwarnoff [ID] [Причина]{FFFFFF}, чтобы выдать выговор [offline]", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/fwarnoff [ID] [РџСЂРёС‡РёРЅР°]{FFFFFF}, С‡С‚РѕР±С‹ РІС‹РґР°С‚СЊ РІС‹РіРѕРІРѕСЂ [offline]", -1)
         end
     end)
 end
@@ -1283,20 +1283,20 @@ function black(param)
         local id = tonumber(param)
         if param and id ~= nil then
             if sampIsPlayerConnected(id) then
-                sampSendChat("/me засунув руку в правый карман, достал телефон")
+                sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
                 wait(400)
-                sampSendChat("/me открыв приложение организации, нажал на кнопку «Чёрный список»")
+                sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р§С‘СЂРЅС‹Р№ СЃРїРёСЃРѕРєВ»")
                 wait(400)
-                sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Подтвердить»")
+                sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РџРѕРґС‚РІРµСЂРґРёС‚СЊВ»")
                 wait(400)
-                sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+                sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
                 wait(2000)
                 sampSendChat("/black " .. id)
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/black [ID]{FFFFFF}, чтобы Черный список занести/вынести", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/black [ID]{FFFFFF}, С‡С‚РѕР±С‹ Р§РµСЂРЅС‹Р№ СЃРїРёСЃРѕРє Р·Р°РЅРµСЃС‚Рё/РІС‹РЅРµСЃС‚Рё", -1)
         end
     end)
 end
@@ -1319,17 +1319,17 @@ end
 function offblack(param)
     lua_thread.create(function()
         if param:len() > 0 then
-            sampSendChat("/me засунув руку в правый карман, достал телефон")
+            sampSendChat("/me Р·Р°СЃСѓРЅСѓРІ СЂСѓРєСѓ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ, РґРѕСЃС‚Р°Р» С‚РµР»РµС„РѕРЅ")
             wait(400)
-            sampSendChat("/me открыв приложение организации, нажал на кнопку «Чёрный список»")
+            sampSendChat("/me РѕС‚РєСЂС‹РІ РїСЂРёР»РѕР¶РµРЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«Р§С‘СЂРЅС‹Р№ СЃРїРёСЃРѕРєВ»")
             wait(400)
-            sampSendChat("/me введя имя, фамилию и причину, нажал на кнопку «Подтвердить»")
+            sampSendChat("/me РІРІРµРґСЏ РёРјСЏ, С„Р°РјРёР»РёСЋ Рё РїСЂРёС‡РёРЅСѓ, РЅР°Р¶Р°Р» РЅР° РєРЅРѕРїРєСѓ В«РџРѕРґС‚РІРµСЂРґРёС‚СЊВ»")
             wait(400)
-            sampSendChat("/me заблокировав экран, положил телефон в правый карман")
+            sampSendChat("/me Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РІ СЌРєСЂР°РЅ, РїРѕР»РѕР¶РёР» С‚РµР»РµС„РѕРЅ РІ РїСЂР°РІС‹Р№ РєР°СЂРјР°РЅ")
             wait(2000)
             sampSendChat("/black " .. param)
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/offblack [ID]{FFFFFF}, чтобы Черный список занести/вынести [offline]", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/offblack [ID]{FFFFFF}, С‡С‚РѕР±С‹ Р§РµСЂРЅС‹Р№ СЃРїРёСЃРѕРє Р·Р°РЅРµСЃС‚Рё/РІС‹РЅРµСЃС‚Рё [offline]", -1)
         end
     end)
 end
@@ -1358,8 +1358,8 @@ function selectID()
     local result, target = getCharPlayerIsTargeting(playerHandle)
     if result and isKeyJustPressed(0x31) then 
         result, playerid = sampGetPlayerIdByCharHandle(target) 
-        sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Вы начали взаимодействовать с {de6262}" .. sampGetPlayerNickname(playerid), -1)
-    end -- Если зажата пкм на игроке и 1, то получаем ID.
+        sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}Р’С‹ РЅР°С‡Р°Р»Рё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ {de6262}" .. sampGetPlayerNickname(playerid), -1)
+    end -- Р•СЃР»Рё Р·Р°Р¶Р°С‚Р° РїРєРј РЅР° РёРіСЂРѕРєРµ Рё 1, С‚Рѕ РїРѕР»СѓС‡Р°РµРј ID.
     if playerid ~= nil then
         return playerid
     end
@@ -1370,13 +1370,13 @@ function selected_cmd(param)
         local id = tonumber(param)
         if param and id ~= nil then
             if sampIsPlayerConnected(id) then
-                sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Вы начали взаимодействовать с {de6262}" .. sampGetPlayerNickname(param), -1)
+                sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}Р’С‹ РЅР°С‡Р°Р»Рё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ {de6262}" .. sampGetPlayerNickname(param), -1)
                 playerid = id
             else
-                sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Игрок с которым вы взаимодействуете не в сети", -1)
+                sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}РРіСЂРѕРє СЃ РєРѕС‚РѕСЂС‹Рј РІС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ РЅРµ РІ СЃРµС‚Рё", -1)
             end
         else
-            sampAddChatMessage("• {FFD700}[Подсказка] {FFFFFF}Используйте {FF4500}/select [ID]{FFFFFF}, чтобы взаимодействовать с игроком", -1)
+            sampAddChatMessage("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}РСЃРїРѕР»СЊР·СѓР№С‚Рµ {FF4500}/select [ID]{FFFFFF}, С‡С‚РѕР±С‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ РёРіСЂРѕРєРѕРј", -1)
         end
     end)
 end
@@ -1385,7 +1385,7 @@ function selectName()
     if playerid ~= nil then
         return sampGetPlayerNickname(playerid)
     else
-        return "Неизвестно"
+        return "РќРµРёР·РІРµСЃС‚РЅРѕ"
     end
 end
 
@@ -1393,16 +1393,16 @@ function selectInfoOverlay()
     if playerid ~= nil then
         return "{selectName} [{selectID}]"
     else
-        return "Неизвестно"
+        return "РќРµРёР·РІРµСЃС‚РЅРѕ"
     end
 end
 
 function cancel()
     if playerid ~= nil then
         playerid = nil
-        sampAddChatMessage(change_tags("• {FFD700}[Подсказка] {FFFFFF}Вы прекратили взаимодействовать с {de6262}{selectName}", change), -1)
+        sampAddChatMessage(change_tags("вЂў {FFD700}[РџРѕРґСЃРєР°Р·РєР°] {FFFFFF}Р’С‹ РїСЂРµРєСЂР°С‚РёР»Рё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ {de6262}{selectName}", change), -1)
     else
-        sampAddChatMessage("• {F31D2F}[Ошибка] {FFFFFF}Вы не взаимодействуете с игроком", -1)
+        sampAddChatMessage("вЂў {F31D2F}[РћС€РёР±РєР°] {FFFFFF}Р’С‹ РЅРµ РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµС‚Рµ СЃ РёРіСЂРѕРєРѕРј", -1)
     end
 end
 
@@ -1415,7 +1415,7 @@ function city()
     elseif city == 3 then
         return "Las-Venturas"
     else
-        return "Неизвестно"
+        return "РќРµРёР·РІРµСЃС‚РЅРѕ"
     end
 end
 
@@ -1428,30 +1428,30 @@ end
 
 function kvadrat()
     local KV = {
-        [1] = "А",
-        [2] = "Б",
-        [3] = "В",
-        [4] = "Г",
-        [5] = "Д",
-        [6] = "Ж",
-        [7] = "З",
-        [8] = "И",
-        [9] = "К",
-        [10] = "Л",
-        [11] = "М",
-        [12] = "Н",
-        [13] = "О",
-        [14] = "П",
-        [15] = "Р",
-        [16] = "С",
-        [17] = "Т",
-        [18] = "У",
-        [19] = "Ф",
-        [20] = "Х",
-        [21] = "Ц",
-        [22] = "Ч",
-        [23] = "Ш",
-        [24] = "Я",
+        [1] = "Рђ",
+        [2] = "Р‘",
+        [3] = "Р’",
+        [4] = "Р“",
+        [5] = "Р”",
+        [6] = "Р–",
+        [7] = "Р—",
+        [8] = "Р",
+        [9] = "Рљ",
+        [10] = "Р›",
+        [11] = "Рњ",
+        [12] = "Рќ",
+        [13] = "Рћ",
+        [14] = "Рџ",
+        [15] = "Р ",
+        [16] = "РЎ",
+        [17] = "Рў",
+        [18] = "РЈ",
+        [19] = "Р¤",
+        [20] = "РҐ",
+        [21] = "Р¦",
+        [22] = "Р§",
+        [23] = "РЁ",
+        [24] = "РЇ",
     }
     local X, Y, Z = getCharCoordinates(PLAYER_PED)
     X = math.ceil((X + 3000) / 250)
@@ -1513,13 +1513,13 @@ function imgui.TextRGB(text)
 end
 
 
-function check_update() -- Создаём функцию которая будет проверять наличие обновлений при запуске скрипта.
+function check_update() -- РЎРѕР·РґР°С‘Рј С„СѓРЅРєС†РёСЋ РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїСЂРѕРІРµСЂСЏС‚СЊ РЅР°Р»РёС‡РёРµ РѕР±РЅРѕРІР»РµРЅРёР№ РїСЂРё Р·Р°РїСѓСЃРєРµ СЃРєСЂРёРїС‚Р°.
     downloadUrlToFile(update_url, update_path, function(id, status)
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nil, update_path)
-            if tonumber(updateIni.info.vers) > script_vers then -- Сверяем версию в скрипте и в ini файле на github
-                sampAddChatMessage("{FFFFFF}Имеется {32CD32}новая {FFFFFF}версия скрипта. Версия: {32CD32}"..updateIni.info.vers_text..". {FFFFFF}/update что-бы обновить", 0xFF0000) -- Сообщаем о новой версии.
-                update_found == true -- если обновление найдено, ставим переменной значение true
+            if tonumber(updateIni.info.vers) > script_vers then -- РЎРІРµСЂСЏРµРј РІРµСЂСЃРёСЋ РІ СЃРєСЂРёРїС‚Рµ Рё РІ ini С„Р°Р№Р»Рµ РЅР° github
+                sampAddChatMessage("{FFFFFF}РРјРµРµС‚СЃСЏ {32CD32}РЅРѕРІР°СЏ {FFFFFF}РІРµСЂСЃРёСЏ СЃРєСЂРёРїС‚Р°. Р’РµСЂСЃРёСЏ: {32CD32}"..updateIni.info.vers_text..". {FFFFFF}/update С‡С‚Рѕ-Р±С‹ РѕР±РЅРѕРІРёС‚СЊ", 0xFF0000) -- РЎРѕРѕР±С‰Р°РµРј Рѕ РЅРѕРІРѕР№ РІРµСЂСЃРёРё.
+                update_found == true -- РµСЃР»Рё РѕР±РЅРѕРІР»РµРЅРёРµ РЅР°Р№РґРµРЅРѕ, СЃС‚Р°РІРёРј РїРµСЂРµРјРµРЅРЅРѕР№ Р·РЅР°С‡РµРЅРёРµ true
             end
             os.remove(update_path)
         end
